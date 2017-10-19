@@ -1,0 +1,41 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "The frontend",
+  "license": "UNLICENSED",
+  "author": "flexperto <info@flexperto.com>",
+  "main": "index.js",
+  "homepage": "https://bitbucket.org/flexperto/fat-node",
+  "scripts": {
+    "coverage": "./node_modules/.bin/nyc --reporter=text --reporter=html --check-coverage --lines 100 --funcs 100 --stmts 100 --branch 100 npm run test",
+    "test": "./node_modules/.bin/mocha --ui bdd --reporter spec --recursive test",
+    "start": "npm i && webpack-dev-server --config webpack.config.js --hot --inline --progress --colors --watch --content-base ./dist",
+    "verify-eslint": "./node_modules/.bin/eslint ./src",
+    "verify": "npm run verify-eslint && npm run coverage"
+  },
+  "dependencies": {
+    "socket.io-client": "^2.0.3",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.4.0",
+    "mocha": "^3.5.0",
+    "nyc": "^11.1.0",
+    "should": "^11.2.1",
+    "sinon": "^3.1.0",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/flexperto/fat-node.git"
+  },
+  "keywords": [
+    "flexperto",
+    "momus",
+    "logging gateway"
+  ]
+}
