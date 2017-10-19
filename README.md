@@ -18,12 +18,13 @@ Alice ...
 
 ### The rules
 
-  1. Alice speaks plain english only.
-  2. You can use whatever IDE you would like to
-  3. Your ```docker exec -it {container_id} npm run verify``` in both frontend and backend should not break
-  4. You can savely assume that Alice is the only user of the chat bot. There is not need for authentication or concurrency concerns.
-  5. Add documentation to this file that helps us understand how to use your chat-bot
-  6. Create meaningfull commits
+  1. Build a Chat-Bot that helps Alice on her User journey
+  2. Alice speaks plain english only.
+  3. You can use whatever IDE you would like to
+  4. Your ```docker exec -it {container_id} npm run verify``` in both frontend and backend should not break
+  5. You can savely assume that Alice is the only user of the chat bot. There is not need for authentication or concurrency concerns.
+  6. Add documentation to this file that helps us understand how to use your chat-bot
+  7. Create meaningfull commits
 
 
 ### The Hook
