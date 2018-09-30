@@ -2,8 +2,9 @@ const constants = {
   information: 'information',
   booking: 'booking',
   email: 'email',
-  days: 'date',
+  days: 'days',
   room: 'room',
+  price: 'price',
   checkout: 'checkout'
 };
 

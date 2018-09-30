@@ -10,7 +10,7 @@ class MessageHandler {
    * @constructor
    */
   constructor() {
-    console.log('Bootstraping Message Handler...');
+    console.log('[MESSAGE_HANDLER] Bootstraping Message Handler...');
 
     console.log('[MESSAGE_HANDLER] Adding information messages...');
     this.setInformationMessages(messages.information.messages);
@@ -24,7 +24,7 @@ class MessageHandler {
     console.log('[MESSAGE_HANDLER] Adding booking fallback messages...');
     this.setBookingFallbacks(messages.booking.fallbacks);
 
-    console.log('MessageHandler bootstraping finished!');
+    console.log('[MESSAGE_HANDLER] MessageHandler bootstraping completed!');
   }
 
   /**
@@ -44,7 +44,7 @@ class MessageHandler {
       botState: constants.information,
     };
 
-    let messages = {};
+    let messages = [];
     let fallbacks = {};
 
     switch (scope) {
@@ -72,11 +72,22 @@ class MessageHandler {
       output.message = foundExpression.messages[Math.floor(Math.random() * foundExpression.messages.length)];
       output.status = true;
       output.botState = foundExpression.botState || constants.information;
+      output.restartBookingData = foundExpression.restartBookingData || false;
+      if (output.restartBookingData === true &&
+        (inputMsg.toLowerCase() === 'yes' || inputMsg.toLowerCase() === 'confirm')
+      ) {
+        output.message = `Thank you so much for booking a room in our hotel! ${output.message}`;
+      }
+      if (output.restartBookingData === true &&
+        (inputMsg.toLowerCase() === 'no' || inputMsg.toLowerCase() === 'cancel')
+      ) {
+        output.message = `YOUR BOOKING ORDER WAS SUCCESSFULLY CANCELED! ${output.message}`;
+      }
     } else {
       output.message = scope === constants.information ?
         fallbacks[Math.floor(Math.random() * fallbacks.length)] :
         bookingScope !== null ?
-          fallbacks[bookingScope].messages :
+          fallbacks[bookingScope].messages[Math.floor(Math.random() * fallbacks[bookingScope].messages.length)] :
           'Ooops something went wrong...';
       output.botState = scope === constants.information ?
         constants.information :
@@ -90,17 +101,21 @@ class MessageHandler {
    * Check if message matches any defined regex
    * @param {string} inputMsg
    * @param {Array} messages
+   * @return {object|undefined}
    */
-  matchExpression(inputMsg, messages) {
+  matchExpression(inputMsg, messages = []) {
     return messages.find(message => message.regex.test(inputMsg) === true);
   }
 
   /**
    * Set information messages
    * @param {object} informationMessagesObject
+   * @return {MessageHandler}
    */
   setInformationMessages(informationMessagesObject) {
     this.informationMessages = informationMessagesObject;
+
+    return this;
   }
 
   /**
@@ -114,9 +129,12 @@ class MessageHandler {
   /**
    * Set booking messages
    * @param {object} informationMessagesObject
+   * @return {MessageHandler}
    */
   setBookingMessages(informationMessagesObject) {
     this.bookingMessages = informationMessagesObject;
+
+    return this;
   }
 
   /**
@@ -130,9 +148,12 @@ class MessageHandler {
   /**
    * Set information fallback messages
    * @param {object} fallbacks
+   * @return {MessageHandler}
    */
   setInformationFallbacks(fallbacks = []) {
     this.informationFallbacks = fallbacks;
+
+    return this;
   }
 
   /**
@@ -146,9 +167,12 @@ class MessageHandler {
   /**
    * Set booking fallback messages
    * @param {object} bookingFallbacksObject
+   * @return {MessageHandler}
    */
   setBookingFallbacks(bookingFallbacksObject = {}) {
     this.bookingFallbacks = bookingFallbacksObject;
+
+    return this;
   }
 
   /**
