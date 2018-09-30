@@ -36,12 +36,15 @@ class MessageHandler {
    * @param bookingScope
    */
   getResponseMessageObject(inputMsg, scope, bookingScope = null) {
-    let messages = {};
-    let fallbacks = {};
+    /* Default output - status flag is used so ChatBot can know should he update maybe booking data
+     via booking handler in case bot state is in booking mode */
     let output = {
-      message: 'Hmm something went wrong...',
+      message: 'Oops something went wrong...',
       status: false,
     };
+
+    let messages = {};
+    let fallbacks = {};
 
     switch (scope) {
       case constants.information: {
@@ -61,10 +64,11 @@ class MessageHandler {
       }
     }
 
-    const foundExpression = this.matchExpression(inputMsg, Object.keys(messages));
+    const foundExpression = this.matchExpression(inputMsg, messages);
 
-    if (foundExpression) {
-      output.message = messages[foundExpression][Math.floor(Math.random() * fallbacks.length)];
+    // Set random message from list of messages and appropriate status
+    if (typeof foundExpression !== 'undefined') {
+      output.message = foundExpression.messages[Math.floor(Math.random() * foundExpression.messages.length)];
       output.status = true;
     } else {
       output.message = scope === constants.information ?
@@ -80,18 +84,10 @@ class MessageHandler {
   /**
    * Check if message matches any defined regex
    * @param {string} inputMsg
-   * @param {Array} expressions
+   * @param {Array} messages
    */
-  matchExpression(inputMsg, expressions = []) {
-    let foundExpression = null;
-
-    expressions.map(expression => {
-      if (expression.test(inputMsg) === true) {
-        foundExpression = expression;
-      }
-    });
-
-    return foundExpression;
+  matchExpression(inputMsg, messages) {
+    return messages.find(message => message.regex.test(inputMsg) === true);
   }
 
   /**

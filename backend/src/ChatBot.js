@@ -20,7 +20,7 @@ class ChatBot {
     this.setBookingHandler(bookingHandler);
 
     console.log(`[CHAT_BOT] Setting initial state to ${constants.information}`);
-    this.state = constants.information;
+    this.setState(constants.information);
 
     console.log('ChatBot bootstrap complete. ChatBot is now active...');
   }
@@ -29,7 +29,24 @@ class ChatBot {
     const messageHandler = this.getMessageHandler();
     const bookingHandler = this.getBookingHandler();
 
-    const resonse = messageHandler.getResponseObject(inputMsg, this.getState(),);
+    const currentState = this.getState();
+    const bookingScope = bookingHandler.getScope();
+
+    const response = messageHandler.getResponseMessageObject(inputMsg, currentState, bookingScope);
+
+    if (response.status === true && currentState === constants.booking) {
+      try {
+        bookingHandler.setData(bookingScope, inputMsg);
+        const bookingData = bookingHandler.getAllData();
+        const bookingDataKeys = Object.keys(bookingData);
+        const currentScopeIndex = bookingDataKeys.indexOf(bookingScope);
+        bookingData.setScope(bookingDataKeys[currentScopeIndex + 1]); // Change scope to next step
+      } catch (error) {
+        return error.message;
+      }
+    }
+
+    return response.message;
   }
 
   /**

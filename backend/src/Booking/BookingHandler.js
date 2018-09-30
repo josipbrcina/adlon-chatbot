@@ -64,6 +64,14 @@ class BookingHandler {
   }
 
   /**
+   * Get full data object
+   * @returns {object}
+   */
+  getAllData() {
+    return this.data;
+  }
+
+  /**
    * Validate booking key
    * @param key
    * @returns {boolean}
