@@ -1,26 +1,22 @@
 'use strict';
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var SocketHandler = require('./socketHandler.js');
-const socketHandler = new SocketHandler.SocketHandler();
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const SocketHandler = new (require('./SocketHandler.js'))();
 
+io.on('connection', (socket) => {
+  SocketHandler.onConnect();
 
-io.on('connection', function(socket){
-
-  socketHandler.onConnect();
-
-  socket.on('disconnect', function(){
-    socketHandler.onDisconnect();
+  socket.on('disconnect', () => {
+    SocketHandler.onDisconnect();
   });
 
-  socket.on('chat message', function(msg){
-    socketHandler.onMessage({msg, socket});
+  socket.on('chat message', (msg) => {
+    SocketHandler.onMessage({ msg, socket });
   });
-
 });
 
-http.listen(3000, '0.0.0.0', function(){ // eslint-disable-line no-magic-numbers
-  console.log('listening on *:3000');
+http.listen(3000, '0.0.0.0', () => { // eslint-disable-line no-magic-numbers
+  console.log('Listening on *:3000');
 });
