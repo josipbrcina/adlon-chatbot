@@ -24,7 +24,7 @@ const messages = {
         regex: /^.*?\b(computer|bot|machine)\b.*?$/mi,
         messages: [
           'Do computers worry you?',
-          'I am machine but I am here to help you so do not worry Alice?',
+          'I am machine but I am here to help you so do not worry Alice!',
           'Why do you mention computers?',
           'What do you think machines have to do with your problem?',
         ],

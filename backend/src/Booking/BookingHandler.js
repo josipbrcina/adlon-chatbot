@@ -157,8 +157,8 @@ class BookingHandler {
     const data = this.getAllData();
 
     return `Hey Alice. You have requested to book a ${data[constants.room]} room for
-    ${data[constants.days]} days and that will cost you ${data[constants.price]}$. 
-    Your email for confirmation is ${data[constants.email]}.`;
+    ${data[constants.days]} ${parseInt(data[constants.days]) === 1 ? 'day' : 'days'} and that will 
+    cost you ${data[constants.price]}$. Your email for confirmation is ${data[constants.email]}.`;
   }
 }
 
