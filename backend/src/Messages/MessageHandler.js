@@ -41,6 +41,7 @@ class MessageHandler {
     let output = {
       message: 'Oops something went wrong...',
       status: false,
+      botState: constants.information,
     };
 
     let messages = {};
@@ -70,12 +71,16 @@ class MessageHandler {
     if (typeof foundExpression !== 'undefined') {
       output.message = foundExpression.messages[Math.floor(Math.random() * foundExpression.messages.length)];
       output.status = true;
+      output.botState = foundExpression.botState || constants.information;
     } else {
       output.message = scope === constants.information ?
         fallbacks[Math.floor(Math.random() * fallbacks.length)] :
         bookingScope !== null ?
-          fallbacks[bookingScope] :
+          fallbacks[bookingScope].messages :
           'Ooops something went wrong...';
+      output.botState = scope === constants.information ?
+        constants.information :
+        constants.booking;
     }
 
     return output;

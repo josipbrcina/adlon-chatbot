@@ -1,3 +1,5 @@
+const constants = require('../Constants/constants');
+
 const messages = {
   information: {
     messages: [
@@ -79,14 +81,17 @@ const messages = {
         messages: [
           'So you want to book a room? That\'s grate! Can you tell me a date when do you want to ' +
           'book a room? f.e. (Nov 23-25)'
-        ]
+        ],
+        botState: constants.booking
       },
       {
         regex: /^.*?\b(room|rooms)\b.*?(reserve|book|reservation|booking)\b.*?$/mi,
         messages: [
-          'So you want to book a room? That\'s grate! Can you tell me a date when do you want to ' +
-          'book a room? f.e. (Nov 23-25)'
-        ]
+          'Can you please tells us how many days do you want to stay? We have free rooms for' +
+          ' the next 3 days? Hint: You can answer with simple number like 1, 2 or 3',
+          'We have got free rooms for the next 3 days? How many days do you want 1, 2 or 3?'
+        ],
+        botState: constants.booking
       }
     ],
     fallbacks: [
@@ -98,23 +103,70 @@ const messages = {
     ]
   },
   booking: {
-    messags: {
-      scope: {
-        date: {},
-        room: {},
-        email: {},
-        price: {}
+    messages: [
+      {
+        regex: /^\b(1|2|3)\b$/mi,
+        messages: [
+          'Can you please choose your room type? (Executive, Deluxe, Superior)',
+          'Do you want Executive, Deluxe or Superior Deluxe room?'
+        ],
+        botState: constants.booking,
+        scope: constants.days,
+      },
+      {
+        regex: /^\b(executive|deluxe|superior|superior deluxe)\b$/mi,
+        messages: [
+          'Please, type in your email address so we can proceed.',
+          'Can you please type in your email.',
+          'We need your email to finish registration, can you please type in you email address?'
+        ],
+        botState: constants.booking,
+        scope: constants.room,
+      },
+      {
+        regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, // eslint-disable-line,
+        messages: [
+          'If you want to confirm your booking order type in "YES" please or if not you can' +
+          ' cancel it by writing down "NO" or "CANCEL"'
+        ],
+        botState: constants.booking,
+        scope: constants.email,
+      },
+      {
+        regex: /^.*?\b(yes|confirm|cancel|no)\b.*?$/mi,
+        messages: [
+          '== Thank you for talking with me, Petar, AdlonBot for Adlon Kemplinski Berlin! Can I' +
+          ' help you with anything else? =='
+        ],
+        botState: constants.booking,
+        scope: constants.checkout,
       }
-    },
+    ],
     fallbacks: {
-      scope: {
-        date: {},
-        room: {},
-        email: {},
-        price: {}
+      days: {
+        messages: [
+          'Sorry but you need to type in days in format 1, 2 or 3. It\'s up to you!',
+          'You did not enter valid number of days. So sorry. Try again.'
+        ]
+      },
+      room: {
+        messages: [
+          'Hey, u need to provide us room type. Do you want Executive, Deluxe or Superior Deluxe?',
+          'Please tell me which room type do you want, Executive, Deluxe or Superior Deluxe'
+        ]
+      },
+      email: {
+        messages: [
+          'Hmm, it seems you entered invalid email format? Can you check again?',
+          'Wrong email format I am afraid so. Please try again! Thank you!',
+        ]
+      },
+      checkout: {
+        messages: [
+          'Please can you tell me do you agree with booking (YES) or should we cancel order (NO)',
+          'I\'m afraid I do not understand. Should we confirm order or cancel it? (YES-NO)'
+        ]
       }
-    }
-  }
-};
+    };
 
 module.exports = messages;

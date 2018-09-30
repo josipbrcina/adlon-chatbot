@@ -2,9 +2,9 @@ const constants = {
   information: 'information',
   booking: 'booking',
   email: 'email',
-  date: 'date',
+  days: 'date',
   room: 'room',
-  price: 'price'
+  checkout: 'checkout'
 };
 
 module.exports = constants;

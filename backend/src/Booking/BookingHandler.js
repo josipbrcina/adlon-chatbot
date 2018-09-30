@@ -14,7 +14,7 @@ class BookingHandler {
     console.log('[BOOKING_HANDLER] Setting initial booking data and scope...');
     this.scope = null;
     this.data = {
-      date: null,
+      days: null,
       email: null,
       room: null,
       price: null
@@ -47,6 +47,12 @@ class BookingHandler {
   setData(key, value) {
     if (!this.validateKey(key)) {
       throw new Error('Invalid booking property provided!');
+    }
+    if (key === constants.email) {
+      const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line
+      if (emailRegex.test(value) === false) {
+        throw new Error('Invalid email format! Please try again!');
+      }
     }
     this.data[key] = value;
   }

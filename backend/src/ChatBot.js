@@ -30,21 +30,27 @@ class ChatBot {
     const bookingHandler = this.getBookingHandler();
 
     const currentState = this.getState();
-    const bookingScope = bookingHandler.getScope();
+    let bookingScope = bookingHandler.getScope();
 
     const response = messageHandler.getResponseMessageObject(inputMsg, currentState, bookingScope);
 
-    if (response.status === true && currentState === constants.booking) {
+    if (response.status === true && response.botState === constants.booking) {
       try {
+        // In case of first time switch from information to booking process
+        bookingScope = bookingScope === null ? constants.email : bookingScope;
+
         bookingHandler.setData(bookingScope, inputMsg);
         const bookingData = bookingHandler.getAllData();
         const bookingDataKeys = Object.keys(bookingData);
         const currentScopeIndex = bookingDataKeys.indexOf(bookingScope);
+
         bookingData.setScope(bookingDataKeys[currentScopeIndex + 1]); // Change scope to next step
       } catch (error) {
         return error.message;
       }
     }
+
+    this.setState(response.botState);
 
     return response.message;
   }
