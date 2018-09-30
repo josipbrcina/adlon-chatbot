@@ -6,6 +6,7 @@ const constants = require('../Constants/constants');
 class BookingHandler {
   /**
    * BookingHandler constructor
+   * @constructor
    */
   constructor() {
     console.log('Bootstraping Booking handler...');
