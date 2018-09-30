@@ -111,18 +111,18 @@ class MessageHandler {
 
   /**
    * Set information messages
-   * @param {object} informationMessagesObject
+   * @param {Array} informationMessages
    * @return {MessageHandler}
    */
-  setInformationMessages(informationMessagesObject) {
-    this.informationMessages = informationMessagesObject;
+  setInformationMessages(informationMessages = []) {
+    this.informationMessages = informationMessages;
 
     return this;
   }
 
   /**
    * Get information messages
-   * @returns {object}
+   * @returns {Array}
    */
   getInformationMessages() {
     return this.informationMessages;
@@ -149,7 +149,7 @@ class MessageHandler {
 
   /**
    * Set information fallback messages
-   * @param {object} fallbacks
+   * @param {Array} fallbacks
    * @return {MessageHandler}
    */
   setInformationFallbacks(fallbacks = []) {
@@ -160,7 +160,7 @@ class MessageHandler {
 
   /**
    * Get information fallback messages
-   * @returns {object}
+   * @returns {Array}
    */
   getInformationFallbacks() {
     return this.informationFallbacks;
