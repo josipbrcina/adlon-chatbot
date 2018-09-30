@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/ChatBot.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> ChatBot.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">73.17% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>30/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">73.17% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>30/41</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const constants = require('./Constants/constants');
+&nbsp;
+/**
+ * Class ChatBot - basically controller that handles I/O
+ */
+class ChatBot {
+  /**
+   * ChatBot constructor
+   * @constructor
+   * @param {object} messageHandler
+   * @param {object} bookingHandler
+   */
+  constructor(messageHandler, bookingHandler) {
+    console.log('Bootstraping ChatBot...');
+&nbsp;
+    console.log('[CHAT_BOT] Adding MessageHandler...');
+    this.setMessageHandler(messageHandler);
+&nbsp;
+    console.log('[CHAT_BOT] Adding BookingHandler...');
+    this.setBookingHandler(bookingHandler);
+&nbsp;
+    console.log(`[CHAT_BOT] Setting initial state to ${constants.information}`);
+    this.setState(constants.information);
+&nbsp;
+    console.log('ChatBot bootstrap completed! ChatBot is now active...');
+  }
+&nbsp;
+  /**
+   * Get bot output message based on user input
+   * @param {string} inputMsg
+   * @returns {string}
+   */
+  getResponseMessage(inputMsg) {
+    const messageHandler = this.getMessageHandler();
+    const bookingHandler = this.getBookingHandler();
+&nbsp;
+    const currentState = this.getState();
+    let bookingScope = bookingHandler.getScope();
+&nbsp;
+    // Response from MessageHandler
+    const response = messageHandler.getResponseMessageObject(inputMsg, currentState, bookingScope);
+&nbsp;
+    // If bot state is set to "booking" and status is TRUE we should probably update Booking data
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (response.status === true &amp;&amp; response.botState === constants.booking) {
+<span class="cstat-no" title="statement not covered" >      try {</span>
+<span class="cstat-no" title="statement not covered" >        if (bookingScope !== null) {</span>
+<span class="cstat-no" title="statement not covered" >          bookingHandler.setData(bookingScope, inputMsg);</span>
+          const bookingData = <span class="cstat-no" title="statement not covered" >bookingHandler.getAllData();</span>
+          const bookingDataKeys = <span class="cstat-no" title="statement not covered" >Object.keys(bookingData);</span>
+          const currentScopeIndex = <span class="cstat-no" title="statement not covered" >bookingDataKeys.indexOf(bookingScope);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          bookingHandler.setScope(bookingDataKeys[currentScopeIndex + 1]); </span>// Change scope to next step
+        } else {
+          // In case we switched from information state for the first time
+<span class="cstat-no" title="statement not covered" >          bookingHandler.setScope(constants.days);</span>
+        }
+      } catch (error) {
+<span class="cstat-no" title="statement not covered" >        return error.message;</span>
+      }
+    }
+&nbsp;
+    // Let's update bot state
+    this.setState(response.botState);
+&nbsp;
+    let checkoutMessage = null;
+&nbsp;
+    // Restart booking data if response has flag that it was last booking step
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (response.restartBookingData) {
+<span class="cstat-no" title="statement not covered" >      bookingHandler.restartData();</span>
+    }
+&nbsp;
+    // If scope is "checkout" get booking order information
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (bookingHandler.getScope() === constants.checkout &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >this.getState() === constants.booking)</span> {
+<span class="cstat-no" title="statement not covered" >      checkoutMessage = bookingHandler.getCheckoutMessage();</span>
+    }
+&nbsp;
+    return checkoutMessage !== null ? <span class="branch-0 cbranch-no" title="branch not covered" >`${checkoutMessage} ${response.message}` </span>: response.message;
+  }
+&nbsp;
+  /**
+   * Set MessageHandler
+   * @param {MessageHandler|*} handler
+   * @returns {ChatBot}
+   */
+  setMessageHandler(handler) {
+    this.messageHandler = handler;
+&nbsp;
+    return this;
+  }
+&nbsp;
+  /**
+   * Get MessageHandler
+   * @returns {MessageHandler|*}
+   */
+  getMessageHandler() {
+    return this.messageHandler;
+  }
+&nbsp;
+  /**
+   * Set BookingHandler
+   * @param {BookingHandler|*} handler
+   * @returns {ChatBot}
+   */
+  setBookingHandler(handler) {
+    this.bookingHandler = handler;
+&nbsp;
+    return this;
+  }
+&nbsp;
+  /**
+   * Get BookingHandler
+   * @returns {BookingHandler|*}
+   */
+  getBookingHandler() {
+    return this.bookingHandler;
+  }
+&nbsp;
+  /**
+   * Set bot state - information or booking
+   * @param {string} state
+   * @returns {ChatBot}
+   */
+  setState(state) {
+    this.state = state;
+&nbsp;
+    return this;
+  }
+&nbsp;
+  /**
+   * Get current bot state
+   * @returns {string}
+   */
+  getState() {
+    return this.state;
+  }
+}
+&nbsp;
+module.exports = ChatBot;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Sep 30 2018 19:07:08 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

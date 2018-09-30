@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Messages/MessageHandler.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/Messages</a> MessageHandler.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80.39% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>41/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">34.48% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>40/50</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const messages = require('./messages');
+const constants = require('../Constants/constants');
+&nbsp;
+/**
+ * Class MessageHandler used for parsing user I/O
+ */
+class MessageHandler {
+  /**
+   * MessageHandler Constructor
+   * @constructor
+   */
+  constructor() {
+    console.log('[MESSAGE_HANDLER] Bootstraping Message Handler...');
+&nbsp;
+    console.log('[MESSAGE_HANDLER] Adding information messages...');
+    this.setInformationMessages(messages.information.messages);
+&nbsp;
+    console.log('[MESSAGE_HANDLER] Adding information fallback messages...');
+    this.setInformationFallbacks(messages.information.fallbacks);
+&nbsp;
+    console.log('[MESSAGE_HANDLER] Adding booking messages...');
+    this.setBookingMessages(messages.booking.messages);
+&nbsp;
+    console.log('[MESSAGE_HANDLER] Adding booking fallback messages...');
+    this.setBookingFallbacks(messages.booking.fallbacks);
+&nbsp;
+    console.log('[MESSAGE_HANDLER] MessageHandler bootstraping completed!');
+  }
+&nbsp;
+  /**
+   * Get appropriate response object with message and status TRUE|FALSE depending on message
+   * response. If it's matched regex it's true if not it's a fallback and that's false. That depends
+   * on current bot state (information or booking) and user input message
+   * @param {string} inputMsg
+   * @param {string} chatBotState
+   * @param {string|null} bookingScope
+   */
+  getResponseMessageObject(inputMsg, chatBotState, bookingScope = <span class="branch-0 cbranch-no" title="branch not covered" >null)</span> {
+    /* Default output - status flag is used so ChatBot can know should he update maybe booking data
+     via booking handler in case bot state is in booking mode. */
+    let output = {
+      message: 'Oops something went wrong...',
+      status: false,
+      botState: constants.information,
+    };
+&nbsp;
+    let messages = [];
+    let fallbacks = {};
+&nbsp;
+    switch (chatBotState) {
+      case constants.information: {
+        messages = this.getInformationMessages();
+        fallbacks = this.getInformationFallbacks();
+        break;
+      }
+&nbsp;
+<span class="branch-1 cbranch-no" title="branch not covered" >      case constants.booking: {</span>
+<span class="cstat-no" title="statement not covered" >        messages = this.getBookingMessages();</span>
+<span class="cstat-no" title="statement not covered" >        fallbacks = this.getBookingFallbacks();</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+      }
+&nbsp;
+<span class="branch-2 cbranch-no" title="branch not covered" >      default: {</span>
+<span class="cstat-no" title="statement not covered" >        return output;</span>
+      }
+    }
+&nbsp;
+    const foundExpression = this.matchExpression(inputMsg, messages);
+&nbsp;
+    // Set random message from list of messages and appropriate status
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof foundExpression !== 'undefined') {
+      output.message = foundExpression.messages[Math.floor(Math.random() * foundExpression.messages.length)];
+      output.status = true;
+      output.botState = foundExpression.botState || constants.information;
+      output.restartBookingData = foundExpression.restartBookingData || false;
+      // If it's last step of booking state, modify response message depending on user input
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (output.restartBookingData === true &amp;&amp;
+        (<span class="branch-1 cbranch-no" title="branch not covered" >inputMsg.toLowerCase() === 'yes' </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >inputMsg.toLowerCase() === 'confirm')</span>
+      ) {
+<span class="cstat-no" title="statement not covered" >        output.message = `Thank you so much for booking a room in our hotel! ${output.message}`;</span>
+      }
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (output.restartBookingData === true &amp;&amp;
+        (<span class="branch-1 cbranch-no" title="branch not covered" >inputMsg.toLowerCase() === 'no' </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >inputMsg.toLowerCase() === 'cancel')</span>
+      ) {
+<span class="cstat-no" title="statement not covered" >        output.message = `YOUR BOOKING ORDER WAS SUCCESSFULLY CANCELED! ${output.message}`;</span>
+      }
+    } else {
+      // If user input did not match any defined regex send fallback message as response
+<span class="cstat-no" title="statement not covered" >      output.message = chatBotState === constants.information ?</span>
+        fallbacks[Math.floor(Math.random() * fallbacks.length)] :
+        bookingScope !== null ?
+          fallbacks[bookingScope].messages[Math.floor(Math.random() * fallbacks[bookingScope].messages.length)] :
+          'Ooops something went wrong...';
+<span class="cstat-no" title="statement not covered" >      output.botState = chatBotState === constants.information ?</span>
+        constants.information :
+        constants.booking;
+    }
+&nbsp;
+    return output;
+  }
+&nbsp;
+  /**
+   * Check if message matches any defined regex
+   * @param {string} inputMsg
+   * @param {Array} messages
+   * @return {object|undefined}
+   */
+  matchExpression(inputMsg, messages = <span class="branch-0 cbranch-no" title="branch not covered" >[])</span> {
+    return messages.find(message =&gt; message.regex.test(inputMsg) === true);
+  }
+&nbsp;
+  /**
+   * Set information messages
+   * @param {object} informationMessagesObject
+   * @return {MessageHandler}
+   */
+  setInformationMessages(informationMessagesObject) {
+    this.informationMessages = informationMessagesObject;
+&nbsp;
+    return this;
+  }
+&nbsp;
+  /**
+   * Get information messages
+   * @returns {object}
+   */
+  getInformationMessages() {
+    return this.informationMessages;
+  }
+&nbsp;
+  /**
+   * Set booking messages
+   * @param {object} informationMessagesObject
+   * @return {MessageHandler}
+   */
+  setBookingMessages(informationMessagesObject) {
+    this.bookingMessages = informationMessagesObject;
+&nbsp;
+    return this;
+  }
+&nbsp;
+  /**
+   * Get booking messages
+   * @returns {object}
+   */
+<span class="fstat-no" title="function not covered" >  ge</span>tBookingMessages() {
+<span class="cstat-no" title="statement not covered" >    return this.bookingMessages;</span>
+  }
+&nbsp;
+  /**
+   * Set information fallback messages
+   * @param {object} fallbacks
+   * @return {MessageHandler}
+   */
+  setInformationFallbacks(fallbacks = <span class="branch-0 cbranch-no" title="branch not covered" >[])</span> {
+    this.informationFallbacks = fallbacks;
+&nbsp;
+    return this;
+  }
+&nbsp;
+  /**
+   * Get information fallback messages
+   * @returns {object}
+   */
+  getInformationFallbacks() {
+    return this.informationFallbacks;
+  }
+&nbsp;
+  /**
+   * Set booking fallback messages
+   * @param {object} bookingFallbacksObject
+   * @return {MessageHandler}
+   */
+  setBookingFallbacks(bookingFallbacksObject = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+    this.bookingFallbacks = bookingFallbacksObject;
+&nbsp;
+    return this;
+  }
+&nbsp;
+  /**
+   * Get information fallback messages
+   * @returns {object}
+   */
+<span class="fstat-no" title="function not covered" >  ge</span>tBookingFallbacks() {
+<span class="cstat-no" title="statement not covered" >    return this.bookingFallbacks;</span>
+  }
+}
+&nbsp;
+module.exports = MessageHandler;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Sep 30 2018 19:07:08 GMT+0000 (Coordinated Universal Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

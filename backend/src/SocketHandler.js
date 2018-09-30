@@ -1,4 +1,4 @@
-const MessageHandler = new(require('./Messages/MessageHandler'))();
+const MessageHandler = new (require('./Messages/MessageHandler'))();
 const BookingHandler = new (require('./Booking/BookingHandler'))();
 
 const ChatBot = new (require('./ChatBot'))(MessageHandler, BookingHandler);
