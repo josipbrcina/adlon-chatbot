@@ -30,7 +30,6 @@ class BookingHandler {
    * @return {BookingHandler}
    */
   setScope(scope) {
-    console.log('SETTING SCOPE', scope);
     this.scope = scope;
 
     return this;
@@ -61,7 +60,6 @@ class BookingHandler {
    * @return {BookingHandler}
    */
   setData(key, value) {
-    console.log('SETTTTING', key, value);
     if (!this.validateKey(key)) {
       throw new Error('Invalid booking property provided!');
     }

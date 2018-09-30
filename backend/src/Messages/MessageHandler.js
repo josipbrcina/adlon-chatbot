@@ -31,13 +31,13 @@ class MessageHandler {
    * Get appropriate response object with message and status TRUE|FALSE depending on message
    * response. If it's matched regex it's true if not it's a fallback and that's false. That depends
    * on current bot state (information or booking) and user input message
-   * @param inputMsg
-   * @param scope
-   * @param bookingScope
+   * @param {string} inputMsg
+   * @param {string} chatBotState
+   * @param {string|null} bookingScope
    */
-  getResponseMessageObject(inputMsg, scope, bookingScope = null) {
+  getResponseMessageObject(inputMsg, chatBotState, bookingScope = null) {
     /* Default output - status flag is used so ChatBot can know should he update maybe booking data
-     via booking handler in case bot state is in booking mode */
+     via booking handler in case bot state is in booking mode. */
     let output = {
       message: 'Oops something went wrong...',
       status: false,
@@ -47,7 +47,7 @@ class MessageHandler {
     let messages = [];
     let fallbacks = {};
 
-    switch (scope) {
+    switch (chatBotState) {
       case constants.information: {
         messages = this.getInformationMessages();
         fallbacks = this.getInformationFallbacks();
@@ -73,6 +73,7 @@ class MessageHandler {
       output.status = true;
       output.botState = foundExpression.botState || constants.information;
       output.restartBookingData = foundExpression.restartBookingData || false;
+      // If it's last step of booking state, modify response message depending on user input
       if (output.restartBookingData === true &&
         (inputMsg.toLowerCase() === 'yes' || inputMsg.toLowerCase() === 'confirm')
       ) {
@@ -84,12 +85,13 @@ class MessageHandler {
         output.message = `YOUR BOOKING ORDER WAS SUCCESSFULLY CANCELED! ${output.message}`;
       }
     } else {
-      output.message = scope === constants.information ?
+      // If user input did not match any defined regex send fallback message as response
+      output.message = chatBotState === constants.information ?
         fallbacks[Math.floor(Math.random() * fallbacks.length)] :
         bookingScope !== null ?
           fallbacks[bookingScope].messages[Math.floor(Math.random() * fallbacks[bookingScope].messages.length)] :
           'Ooops something went wrong...';
-      output.botState = scope === constants.information ?
+      output.botState = chatBotState === constants.information ?
         constants.information :
         constants.booking;
     }

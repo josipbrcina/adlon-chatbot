@@ -40,7 +40,7 @@ class ChatBot {
     // Response from MessageHandler
     const response = messageHandler.getResponseMessageObject(inputMsg, currentState, bookingScope);
 
-    // If bot state is set to booking and status is ok we should probably update Booking data
+    // If bot state is set to "booking" and status is TRUE we should probably update Booking data
     if (response.status === true && response.botState === constants.booking) {
       try {
         if (bookingScope !== null) {

@@ -27,7 +27,7 @@ class SocketHandler {
   onMessage(/* istanbul ignore next */{ msg, socket, c = console } = {}) {
     c.log(`User sent message: ${msg}`);
     const responseMessage = ChatBot.getResponseMessage(msg);
-    socket.emit('chat message', responseMessage);
+    socket.emit('chat message', `[ALDON] ${responseMessage}`);
   }
 }
 
