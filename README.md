@@ -30,45 +30,45 @@ Alice wants to reserve a room = type in RESERVE/BOOK A ROOM
 ```
 
 ### SAMPLE USAGE
-**Alice**: hello<br/>
+**Alice**: hello <br />
 **AdlonBot**: Hi Alice, how can I help you!
 
-**Alice**: What are you a machine? A bot?<br/>
+**Alice**: What are you a machine? A bot? <br />
 **AdlonBot**: What do you think machines have to do with your problem?
 
-**Alice**: What kind of room types do you have?<br/>
+**Alice**: What kind of room types do you have? <br />
 **AdlonBot**: I see, well we do have Executive, Deluxe, Superior Deluxe rooms.
 
-**Alice**: Hmm, I'm wondering if you have gym maybe?<br/>
+**Alice**: Hmm, I'm wondering if you have gym maybe? <br />
 **AdlonBot**: 'Stay fit and healthy in our state-of-the-art gymnasium. 'The Fitness Centre is 
 open 24 hours.'
 
-**Alice**: And price of the rooms?<br/>
+**Alice**: And price of the rooms? <br />
 **AdlonBot**: Executive room cost 290$, Deluxe 330$ and Superior Deluxe 400$
 
-**Alice**: Hmm great, then I would like to make room reservation<br/>
+**Alice**: Hmm great, then I would like to make room reservation <br />
 
 **AdlonBot**: We have got free rooms for the next 3 days? How many days do you want 1, 2 or 3?
-**Alice**: 1<br/>
+**Alice**: 1 <br />
 
-**AdlonBot**: Can you please choose your room type? (Executive, Deluxe, Superior)!<br/>
-**Alice**: Deluxe!<br/>
+**AdlonBot**: Can you please choose your room type? (Executive, Deluxe, Superior)!<br />
+**Alice**: Deluxe! <br />
 
-**AdlonBot**: Please, type in your email address so we can proceed.<br/>
-**Alice**: alice@gmail.com<br/>
+**AdlonBot**: Please, type in your email address so we can proceed. <br />
+**Alice**: alice@gmail.com <br />
 
 **AdlonBot**: Hey Alice. You have requested to book a Deluxe room for
 1 day and that will cost you 330$. 
-Your email for confirmation is alice@gmail.com.<br/>
+Your email for confirmation is alice@gmail.com. <br />
 If you want to confirm your booking order type in "YES" please or if not you can
 cancel it by writing down "NO" or "CANCEL"
 
-**Alice**: YES<br/>
+**Alice**: YES <br />
 **AdlonBot**: Thank you so much for booking a room in our hotel! == Thank you for talking with 
 me, I am Peter, AdlonBot for Adlon Kemplinski Berlin!
 Can I help you with anything else? ==
 
-**Alice**: bye byeee<br/>
+**Alice**: bye byeee <br />
 **AdlonBot**: Byee... I am so lonely sometimes
 ### The rules
 
@@ -92,14 +92,6 @@ This means that we give you a guideline for 3 hours to solve the general task. H
 
 
 ### How to proceed
+Clone the repo and run ```docker-compose up``` in the root of this repo. Navigating your browser 
+to ```http://localhost:4000``` you will receive a simple chat interface to get you started. Your socket.io backend runs at ```http://localhost:3000```. Please install packages by running ```docker exec -it {container_id} npm i --save {your-fancy-package}```. Otherwise the code will break in our runtime.
 
-Fork this repository on bitbucket and share with Caspar Bauer <caspar.bauer@flexperto.com>.
-Then clone the repo and run ```docker-compose up``` in the root of this repo. Navigating your browser to ```http://localhost:4000``` you will receive a simple chat interface to get you started. Your socket.io backend runs at ```http://localhost:3000```. Please install packages by running ```docker exec -it {container_id} npm i --save {your-fancy-package}```. Otherwise the code will break in our runtime.
-
-### Questions ?
-
-Feel free to contact Caspar Bauer:
-
-mail: caspar.bauer@flexperto.com
-
-available at any time
